@@ -1,0 +1,60 @@
+﻿<div>
+    <div class="page-header">
+        <h2>Policy Bazar: Store</h2>
+    </div>
+    <div>
+    Items in Cart: {{cart.length}}
+    </div>
+    <div class="wrapper">
+        <div class="panel">
+            <div class="panel-body">
+                <form class="form-horizontal" name="addModifyForm" method="post" ng-submit="addModifyForm.$valid && (donation.sdExRate != 0) && (donation.rdExRate != 0) && saveDonation()" novalidate>
+
+                    <div class="input required string ">
+                        <label>Search</label>
+                        <input type="text" name="reference" ng-model="search">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <div class="table-responsive" style="width: 100%">
+                            <table class="table table-curved">
+                                <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+							    </thead>
+                                <tbody>
+                                <tr ng-repeat="product in productList | filter: search">
+                                    <td>
+                                        <img src="{{product.image}}">
+                                    </td>
+                                    <td>
+                                        <span>
+										 {{ product.productName }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span>
+										 {{ product.price | currency }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <button class="btn btn-default btn-save" ng-click="addToCart(product)"><i class="fa fa-check"></i> Add to cart</button>
+                                        </span>
+                                    </td>
+                                </tr>
+							    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<p>&nbsp;</p>
+<p><a href="#/login" class="btn btn-primary">Logout</a></p>
